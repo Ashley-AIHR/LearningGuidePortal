@@ -86,7 +86,7 @@ export function runtimeConfiguration() {
   if (production && publicUrl && !/^https:\/\//i.test(process.env.NEXT_PUBLIC_APP_URL || "")) required.push("HTTPS NEXT_PUBLIC_APP_URL");
   if (production && process.env.LOCAL_SOCIAL_LOGIN !== "0") required.push("LOCAL_SOCIAL_LOGIN=0");
   if (production && !sessionSecret) required.push("SESSION_SECRET (at least 32 characters)");
-  if (["SIT", "UAT"].includes(appEnvironment()) && (process.env.STRIPE_SANDBOX !== "1" || !process.env.STRIPE_SECRET_KEY?.startsWith("sk_test_"))) required.push("Stripe sandbox test credentials");
+  if (["SIT", "UAT", "SANDBOX"].includes(appEnvironment()) && (process.env.STRIPE_SANDBOX !== "1" || !process.env.STRIPE_SECRET_KEY?.startsWith("sk_test_"))) required.push("Stripe sandbox test credentials");
   if (production && !persistentStorage) required.push("DATABASE_URL + DATA_S3_BUCKET (and STORAGE_BACKEND must not be local)");
   if (production && payment !== "stripe") required.push("PAYMENT_MODE=stripe");
   if (production && payment === "stripe" && !stripeSecret) required.push("STRIPE_SECRET_KEY");
