@@ -9,7 +9,7 @@ export function isProductionEnvironment() {
 }
 
 export function isManagedEnvironment() {
-  return ["SIT", "UAT", "PROD", "PPE/PROD", "PRODUCTION"].includes(appEnvironment());
+  return ["SIT", "UAT", "SANDBOX", "PROD", "PPE/PROD", "PRODUCTION"].includes(appEnvironment());
 }
 
 export function localResetPreviewAllowed(request: Request) {
